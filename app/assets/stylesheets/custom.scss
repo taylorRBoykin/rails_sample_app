@@ -1,9 +1,17 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
-// variables
+// variables, mixins, etc
 
 $gray-medium: #eaeaea;
+
+@mixin boxSizing
+{
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+
+    -mz-box-sizing: border-box;
+}
 
 /* universal */
 body
@@ -140,5 +148,114 @@ footer
 
             margin-left: 15px;
         }
+    }
+}
+
+// Misc
+
+.debug_dump
+{
+    float: left;
+    clear: both;
+
+    width: 100%;
+    margin-top: 45px;
+
+    @include boxSizing;
+}
+
+// Sidebar
+
+aside
+{
+    section.user_info
+    {
+        margin-top: 20px;
+    }
+    section
+    {
+        margin: 20px 0 0 0;
+        padding: 10px 0;
+        &:first_child
+        {
+            padding-top: 0;
+
+            border: 0;
+        }
+        span
+        {
+            line-height: 1;
+
+            display: block;
+
+            margin-bottom: 3px;
+        }
+        h1
+        {
+            font-size: 1.4em;
+
+            margin-top: 0;
+            margin-bottom: 3px;
+
+            text-align: left;
+            letter-spacing: -1px;
+        }
+    }
+}
+
+.gravatar
+{
+    float: left;
+
+    margin-right: 10px;
+}
+
+.gravatar_edit
+{
+    margin-top: 15px;
+}
+
+// FORM STYLING
+
+input,
+textarea,
+select,
+.uneditable-input
+{
+    width: 100%;
+    margin-bottom: 15px;
+
+    border: 1px solid #bbb;
+
+    @include boxSizing;
+}
+
+input
+{
+    height: auto !important;
+    padding: 3px 5px;
+    &:focus
+    {
+        outline: none;
+    }
+}
+
+#error_explanation
+{
+    color: red;
+    ul
+    {
+        margin: 0 0 30px 0;
+
+        color: red;
+    }
+}
+
+.field_with_errors
+{
+    @extend .has-error;
+    .form-control
+    {
+        color: $state-danger-text;
     }
 }
