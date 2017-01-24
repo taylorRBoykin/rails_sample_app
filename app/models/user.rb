@@ -11,7 +11,7 @@ class User < ApplicationRecord
                     format: {with: VALID_EMAIL_REGEX},
                     uniqueness: {case_sensitive: false}}
 
-  validates :password, {presence: true, length: {minimum: 6}}
+  validates :password, {presence: true, length: {minimum: 6}, allow_nil: true}
 
   has_secure_password
 
@@ -32,7 +32,7 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, User.digest(remember_token))
   end
 
-  #
+  # tells the server to forget the user when the session ends
   def forget
     update_attribute(:remember_digest, nil)
   end

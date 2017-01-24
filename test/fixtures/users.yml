@@ -3,3 +3,8 @@ taylor:
   name: Taylor Boykin
   email: taylorboykin@example.com
   password_digest: <%= User.digest('password') %>
+
+vader:
+  name: Anakin Skywalker
+  email: lordvader@deathstar.empire
+  password_digest: <%= User.digest('password') %>
