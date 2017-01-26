@@ -9,7 +9,9 @@ User.create!( name: "Taylor Boykin",
               email: "taylorboykin@arrayschool.com",
               password: "password",
               password_confirmation: "password",
-              admin: true)
+              admin: true,
+              activated_flag: true,
+              activated_at: Time.zone.now)
 
 500.times do |n|
   name = Faker::Superhero.name
@@ -19,6 +21,8 @@ User.create!( name: "Taylor Boykin",
   User.create!( name: name,
                 email: email,
                 password: password,
-                password_confirmation: password)
+                password_confirmation: password,
+                activated_flag: true,
+                activated_at: Time.zone.now)
 
 end

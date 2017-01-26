@@ -1,0 +1,5 @@
+Hi <%= @user.name %>,
+
+Thank you for registering with the Hero Corps! Click the link below to confirm your account and start making a difference!
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
