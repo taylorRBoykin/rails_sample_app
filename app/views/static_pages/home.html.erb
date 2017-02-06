@@ -1,11 +1,5 @@
-<div class="center jumbotron">
-  <h1>Welcome to the Sample App.</h1>
-
-  <h2>
-    This is the home page for the Array rails sample application.
-  </h2>
-
-  <%= link_to "Sign Up now!", signup_path, class:"btn btn-lg btn-primary" %>
-</div>
-
-<%= link_to image_tag("DC_Array.png", alt: "Array School Logo", id:"arrayLogo"), "http://www.arrayschool.com" %>
+<% if logged_in? %>
+  <%= render 'static_pages/logged_in_home' %>
+<% else %>
+  <%= render 'static_pages/logged_out_home' %>
+<% end %>

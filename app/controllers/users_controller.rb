@@ -5,11 +5,12 @@ class UsersController < ApplicationController
   before_action :admin_user, only: :destroy
 
   def index
-    @users = User.paginate(page: params[:page], per_page: 15)
+    @users = User.paginate(page: params[:page], per_page: 20)
   end
 
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page], per_page: 10)
   end
 
   def new
@@ -57,15 +58,6 @@ class UsersController < ApplicationController
   end
 
   # Before filters -----------------------------------------------------------------
-
-  # Confirms a logged_in_user
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "Please log in to view this page."
-      redirect_to login_url
-    end
-  end
 
   # Confirms the logged_in_user is correct
   def correct_user
